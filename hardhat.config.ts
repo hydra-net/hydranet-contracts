@@ -54,6 +54,11 @@ const config: HardhatUserConfig = {
             },
             chainId: chainIds.hardhat,
         },
+        arbitrumRinkeby: {
+            accounts: [`${privateKey}`],
+            chainId: 421611,
+            url: 'https://rinkeby.arbitrum.io/rpc'
+        }
         // Uncomment for testing. Commented due to CI issues
         // mainnet: getChainConfig("mainnet"),
         // rinkeby: getChainConfig("rinkeby"),
