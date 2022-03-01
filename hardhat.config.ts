@@ -57,7 +57,9 @@ const config: HardhatUserConfig = {
         arbitrumRinkeby: {
             accounts: [`${privateKey}`],
             chainId: 421611,
-            url: 'https://rinkeby.arbitrum.io/rpc'
+            url: 'https://rinkeby.arbitrum.io/rpc',
+            gas: 2100000,
+            gasPrice: 50000000000
         }
         // Uncomment for testing. Commented due to CI issues
         // mainnet: getChainConfig("mainnet"),
