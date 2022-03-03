@@ -4,7 +4,8 @@ async function main() {
     const [deployer] = await ethers.getSigners();
     console.log("Deploying contracts with the account: " + deployer.address);
 
-    const DAI = "0x0EA36dA8EEBA93dd84BEabF51A11625c966F7E10";
+    const PHYDRA = await ethers.getContractFactory("StakenetERC20Token");
+    const pHydra = await PHYDRA.deploy("Placeholder Hydranet", "pHDX");
 
     const Authority = await ethers.getContractFactory("OlympusAuthority");
     const authority = await Authority.deploy(
@@ -15,7 +16,7 @@ async function main() {
     );
 
     const firstEpochNumber = "1";
-    const firstBlockNumber = "1645137800";
+    const firstBlockNumber = "1646262000";
 
     const OHM = await ethers.getContractFactory("OlympusERC20Token");
     const ohm = await OHM.deploy(authority.address);
@@ -28,8 +29,6 @@ async function main() {
 
     const OlympusTreasury = await ethers.getContractFactory("OlympusTreasury");
     const olympusTreasury = await OlympusTreasury.deploy(ohm.address, "0", authority.address);
-
-    await olympusTreasury.enable("2", DAI, DAI);
 
     await authority.pushVault(olympusTreasury.address, true); // replaces ohm.setVault(treasury.address)
 
@@ -54,6 +53,10 @@ async function main() {
         authority.address
     );
 
+    await olympusTreasury.enable("0", deployer.address, deployer.address);  // enable deployer.address to deposit reserve tokens into treasury
+    await olympusTreasury.enable("2", pHydra.address, pHydra.address); // enable pHydra as a reserver token
+    await olympusTreasury.enable("8", distributor.address, ethers.constants.AddressZero); // enable distributor address to mint HDX using treasury excess reserves
+
     // Initialize sohm
     await sOHM.setIndex("7675210820"); // TODO
     await sOHM.setgOHM(gOHM.address);
@@ -61,8 +64,17 @@ async function main() {
 
     await staking.setDistributor(distributor.address);
 
+    await distributor.setBounty("100000000"); // TODO
+
+    const rewardRate = "4000"; // TODO
+    await distributor.addRecipient(staking.address, rewardRate);
+
+    await pHydra.approve(olympusTreasury.address, "300000000000000000000000000");
+    await olympusTreasury.deposit("300000000000000000000000000", pHydra.address, "150000000000000000"); // deposits 300m pHDX to treasury, mints 150m HDX and keeps 150m pHDX as excess reserves
+
     console.log("Olympus Authority: ", authority.address);
-    console.log("OHM: " + ohm.address);
+    console.log("pHDX: ", pHydra.address);
+    console.log("HDX: " + ohm.address);
     console.log("sOhm: " + sOHM.address);
     console.log("gOHM: " + gOHM.address);
     console.log("Olympus Treasury: " + olympusTreasury.address);

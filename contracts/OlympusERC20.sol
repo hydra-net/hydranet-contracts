@@ -14,8 +14,8 @@ contract OlympusERC20Token is ERC20Permit, IOHM, OlympusAccessControlled {
     using SafeMath for uint256;
 
     constructor(address _authority)
-        ERC20("Hydra", "HDR", 9)
-        ERC20Permit("Hydra")
+        ERC20("Hydranet", "HDX", 9)
+        ERC20Permit("Hydranet")
         OlympusAccessControlled(IOlympusAuthority(_authority))
     {}
 
