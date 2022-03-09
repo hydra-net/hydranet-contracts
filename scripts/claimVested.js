@@ -7,6 +7,9 @@ const { PRIVATE_KEY } = process.env;
 async function main() {
     const [owner] = await ethers.getSigners();
     console.log(`Owner Account: ${owner.address}`);
+    //how to calculate num of tokens to get:
+    //end unix timestamp - start unix timestamp=seconds
+    //total amount vested / seconds=amoutToGet
     try {
         const vestingContractAddr = "";
         const account = "";
