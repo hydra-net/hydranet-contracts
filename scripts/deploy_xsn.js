@@ -16,7 +16,7 @@ async function main() {
     );
 
     const firstEpochNumber = "1";
-    const firstBlockNumber = "1646262000";
+    const firstBlockNumber = "1647097200";
 
     const OHM = await ethers.getContractFactory("OlympusERC20Token");
     const ohm = await OHM.deploy(authority.address);
@@ -58,15 +58,15 @@ async function main() {
     await olympusTreasury.enable("8", distributor.address, ethers.constants.AddressZero); // enable distributor address to mint HDX using treasury excess reserves
 
     // Initialize sohm
-    await sOHM.setIndex("7675210820"); // TODO
+    await sOHM.setIndex("1000000000");
     await sOHM.setgOHM(gOHM.address);
     await sOHM.initialize(staking.address, olympusTreasury.address);
 
     await staking.setDistributor(distributor.address);
 
-    await distributor.setBounty("100000000"); // TODO
+    await distributor.setBounty("50000000000");
 
-    const rewardRate = "4000"; // TODO
+    const rewardRate = "500"; // TODO
     await distributor.addRecipient(staking.address, rewardRate);
 
     await pHydra.approve(olympusTreasury.address, "300000000000000000000000000");
