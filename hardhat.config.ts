@@ -61,6 +61,11 @@ const config: HardhatUserConfig = {
             gas: 2100000,
             gasPrice: 50000000000,
         },
+        arbitrum: {
+            accounts: [`${privateKey}`],
+            chainId: 42161,
+            url: "https://arb1.arbitrum.io/rpc",
+        },
         // Uncomment for testing. Commented due to CI issues
         // mainnet: getChainConfig("mainnet"),
         // rinkeby: getChainConfig("rinkeby"),
@@ -140,10 +145,10 @@ const config: HardhatUserConfig = {
         deployer: {
             default: 0,
         },
-        daoMultisig: {
-            // mainnet
-            1: "0x245cc372C84B3645Bf0Ffe6538620B04a217988B",
-        },
+        // daoMultisig: {
+        //     // mainnet
+        //     1: "0x245cc372C84B3645Bf0Ffe6538620B04a217988B",
+        // },
     },
     typechain: {
         outDir: "types",
@@ -152,6 +157,7 @@ const config: HardhatUserConfig = {
     etherscan: {
         apiKey: process.env.ETHERSCAN_API_KEY,
     },
+
     mocha: {
         timeout: 1000000,
     },
