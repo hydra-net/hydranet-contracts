@@ -79,6 +79,10 @@ make run
 -   [Hardhat testing guide](./docs/guides/hardhat_testing.md)
 -   [Dapptools testing guide](./docs/guides/dapptools.md)
 
+### Deploy all contracts
+
+-   use `deploy_xsn.js` script, check hardhard guide how to deploy to desired network
+
 ### Vesting contract
 
 This contract has possibilities to create linear of locked vestings.
@@ -136,24 +140,23 @@ Prerequisites:
     Examples:
     Linear vesting:
 
-    1.  - `_beneficiary (address)` - 0x0000000000000000000000000000000000000000
-        - `_start (uint256)` - 1650963188
-        - `_cliff (uint256)` - 0
-        - `_duration (uint256)` - 15778800
-        - `_slicePeriodSeconds (uint256)` - 1
-        - `_revocable (bool)` - true
-        - `_amount` - 400000000000000000000000
+    1.  -   `_beneficiary (address)` - 0x0000000000000000000000000000000000000000
+        -   `_start (uint256)` - 1650963188
+        -   `_cliff (uint256)` - 0
+        -   `_duration (uint256)` - 15778800
+        -   `_slicePeriodSeconds (uint256)` - 1
+        -   `_revocable (bool)` - true
+        -   `_amount` - 400000000000000000000000
 
-    2. Lockup:
+    2.  Lockup:
 
-
-        - `_beneficiary (address)` - 0x0000000000000000000000000000000000000000
-        - `_start (uint256)` - 1650963188
-        - `_cliff (uint256)` - 15778800
-        - `_duration (uint256)` - 15778800
-        - `_slicePeriodSeconds (uint256)` - 15778800
-        - `_revocable (bool)` - true
-        - `_amount` - 400000000000000000000000
+        -   `_beneficiary (address)` - 0x0000000000000000000000000000000000000000
+        -   `_start (uint256)` - 1650963188
+        -   `_cliff (uint256)` - 15778800
+        -   `_duration (uint256)` - 15778800
+        -   `_slicePeriodSeconds (uint256)` - 15778800
+        -   `_revocable (bool)` - true
+        -   `_amount` - 400000000000000000000000
 
 2. How to claim vesting?
 
