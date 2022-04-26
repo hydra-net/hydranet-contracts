@@ -83,6 +83,26 @@ make run
 
 -   use `deploy_xsn.js` script, check hardhard guide how to deploy to desired network
 
+### Stake via explorer
+
+-   go to https://arbiscan.io/address/0xd20CDF95a08ACDf8Aa360232Caeda6E59a06951D#writeContract
+-   use method `7. stake`:
+    Parameters:
+    -   `_to (address)` - address of wallet that stakes
+    -   `_amount (uint256)` - amount that is staked, if it's `sHDX` than number has 9 digits so for `10k` tokens use `10000000000000` if it's `gHDX` than number has `18` digits for `10k` use `10000000000000000000000`
+    -   `_rebasing (bool)` - if it's `sHDX` than this is `true` if not than this is `false`
+    -   `_claim (bool)` - set this to `true`
+
+### Unstake via explorer
+
+-   go to https://arbiscan.io/address/0xd20CDF95a08ACDf8Aa360232Caeda6E59a06951D#writeContract
+-   use method `9. unstake`:
+    Parameters:
+    -   `_to (address)` - address of wallet that stakes
+    -   `_amount (uint256)` - amount that is staked, if it's `sHDX` than number has 9 digits so for `10k` tokens use `10000000000000` if it's `gHDX` than number has `18` digits for `10k` use `10000000000000000000000`
+    -   `_trigger (bool)` - set this to `true`
+    -   `_rebasing (bool)` - if it's `sHDX` than this is `true` if not than this is `false`
+
 ### Vesting contract
 
 This contract has possibilities to create linear of locked vestings.
