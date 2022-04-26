@@ -61,6 +61,13 @@ const config: HardhatUserConfig = {
             gas: 2100000,
             gasPrice: 50000000000,
         },
+        rinkeby: {
+            accounts: [`${privateKey}`],
+            chainId: 4,
+            url: "",
+            gas: 2100000,
+            gasPrice: 50000000000,
+        },
         arbitrum: {
             accounts: [`${privateKey}`],
             chainId: 42161,
