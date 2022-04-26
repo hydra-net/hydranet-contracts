@@ -4,17 +4,13 @@ async function main() {
     const [deployer] = await ethers.getSigners();
     console.log("Deploying contracts with the account: " + deployer.address);
 
-    const authority = "";
     const hdx = "";
-    const gHdx = "";
-    const staking = "";
-    const treasury = "";
 
-    const depoFactory = await ethers.getContractFactory("OlympusBondDepositoryV2");
+    const bondingCalcFactory = await ethers.getContractFactory("OlympusBondingCalculator");
 
-    const depo = await depoFactory.deploy(authority, hdx, gHdx, staking, treasury);
+    const bondingCalc = await bondingCalcFactory.deploy(hdx);
 
-    console.log("Bond Depo: " + depo.address);
+    console.log("Bonding calculator: " + bondingCalc.address);
 }
 
 main()

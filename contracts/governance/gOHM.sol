@@ -46,7 +46,7 @@ contract gOHM is IgOHM, ERC20 {
 
     /* ========== CONSTRUCTOR ========== */
 
-    constructor(address _migrator, address _sOHM) ERC20("Governance OHM", "gOHM", 18) {
+    constructor(address _migrator, address _sOHM) ERC20("Governance HDX", "gHDX", 18) {
         require(_migrator != address(0), "Zero address: Migrator");
         approved = _migrator;
         require(_sOHM != address(0), "Zero address: sOHM");
