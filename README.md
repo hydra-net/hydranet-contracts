@@ -1,3 +1,8 @@
+# !!! ARCHIVED !!!
+# [OUTDATED & OFFLINE] Old OHM-based Contracts.
+## See @hydra-net/token
+
+
 # Ω Olympus Smart Contracts 
 ![image](https://img.shields.io/github/forks/OlympusDAO/olympus-contracts?style=social)
 
